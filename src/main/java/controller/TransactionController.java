@@ -1,7 +1,7 @@
 package controller;
+import model.LoginStatus;
 import model.TransactionService;
 import view.TransactionView;
-import model.LoginStatus;
 
 public class TransactionController {
     

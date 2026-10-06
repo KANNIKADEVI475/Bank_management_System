@@ -1,6 +1,7 @@
 package model;
 
 import java.util.ArrayList;
+
 import view.AccountView;
 
 public class AccountService {

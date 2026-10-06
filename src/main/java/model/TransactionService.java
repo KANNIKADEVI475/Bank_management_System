@@ -1,9 +1,8 @@
 package model;
 
-import view.TransactionView;
-import model.Account;
-import model.AccountService;
 import java.util.ArrayList;
+
+import view.TransactionView;
 
 public class TransactionService {
     ArrayList<Transaction> transactions = new ArrayList<>();

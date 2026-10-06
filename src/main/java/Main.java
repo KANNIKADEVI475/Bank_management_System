@@ -6,13 +6,13 @@ import controller.TransactionController;
 import model.AccountService;
 import model.CustomerService;
 import model.LoanService;
+import model.LoginStatus;
 import model.TransactionService;
 import view.AccountView;
 import view.CustomerView;
 import view.LoanView;
 import view.MenuView;
 import view.TransactionView;
-import model.LoginStatus;
 
 public class Main {
     public static void main(String[] args) {

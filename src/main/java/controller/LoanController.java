@@ -1,10 +1,10 @@
 package controller;
 
-import model.LoanService;
-import view.LoanView;
 import model.CustomerService;
-import view.CustomerView;
+import model.LoanService;
 import model.LoginStatus;
+import view.CustomerView;
+import view.LoanView;
 
 public class LoanController {
     
