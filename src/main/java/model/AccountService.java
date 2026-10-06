@@ -27,13 +27,13 @@ public class AccountService {
         System.out.println("Displaying account details.");
         }
 
-        public void calculateInterest(Account account, int years) {
+    public void calculateInterest(Account account, int years) {
 
-            double interest = (account.getCurr_balance() * account.getInterest_rate() * years) / 100;
-            account.setCurr_balance(account.getCurr_balance() + interest);
-            System.out.println("Interest calculated and added to the account balance.");
+        double interest = (account.getCurr_balance() * account.getInterest_rate() * years) / 100;
+        account.setCurr_balance(account.getCurr_balance() + interest);
+        System.out.println("Interest calculated and added to the account balance.");
 
-        }
+    }
     
     public void deleteAccount(Account account) {
         accounts.remove(account);
