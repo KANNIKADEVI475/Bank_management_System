@@ -4,12 +4,13 @@ on:
   push:
     branches:
       - main
+  pull_request: 
+    branches:
+      - main
 
 jobs:
-
   test:
     runs-on: ubuntu-latest
-
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
@@ -24,11 +25,45 @@ jobs:
       - name: Run tests
         run: mvn test
 
-      - name: Build
-        run: mvn package
-              
-      - name: Deploy (Upload Executable App)
+  
+  build:
+    needs: test 
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Set up Java
+        uses: actions/setup-java@v4
+        with:
+          java-version: '21'
+          distribution: 'temurin'
+          cache: maven
+
+      - name: Build executable JAR
+        run: mvn package -DskipTests 
+
+      - name: Save JAR for deployment
         uses: actions/upload-artifact@v4
         with:
-          name: Bank-Management-System-App
+          name: compiled-app
+          path: target/*.jar
+
+  deploy:
+    needs: build 
+    runs-on: ubuntu-latest
+    steps:
+      - name: Download compiled JAR from Build Job
+        uses: actions/download-artifact@v4
+        with:
+          name: compiled-app
+          path: target/
+
+      - name: Deploy / Publish Application
+        run: echo "🎉 Deploying the Bank Management System..."
+
+      - name: Upload Final Release
+        uses: actions/upload-artifact@v4
+        with:
+          name: Bank-Management-System-Release
           path: target/*.jar
